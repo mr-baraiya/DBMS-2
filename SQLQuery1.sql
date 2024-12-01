@@ -111,12 +111,69 @@ ORDER BY Songs.DURATION;
 
 --Part – B
 --22. Retrieve all song titles by artists who have more than one album.
+SELECT S.SONG_TITLE
+FROM Songs S
+JOIN Albums A ON S.Album_id = A.Album_id
+JOIN Artists AR ON A.Artist_id = AR.Artist_id
+WHERE AR.Artist_id IN (
+    SELECT Artist_id
+    FROM Albums
+    GROUP BY Artist_id
+    HAVING COUNT(DISTINCT Album_id) > 1
+);
 --23. Retrieve all albums along with the total number of songs.
+select Album_title , COUNT(Song_id) AS Toal_song
+from Albums a join Songs s
+on a.Album_id = s.Album_id
+group by Album_title;
+
 --24. Retrieve all songs and release year and sort them by release year.
+select Song_title , Release_year
+from Albums a join Songs s
+on a.Album_id = s.Album_id
+order by Release_year;
+
 --25. Retrieve the total number of songs for each genre, showing genres that have more than 2 songs.
+select Genre , count(Song_title)
+from Songs
+group by Genre
+having count(Song_title) > 2;
+
 --26. List all artists who have albums that contain more than 3 songs.
+SELECT ARTISTS.ARTIST_NAME
+FROM ARTISTS
+JOIN ALBUMS ON ARTISTS.ARTIST_ID = ALBUMS.ARTIST_ID
+JOIN SONGS ON ALBUMS.ALBUM_ID = SONGS.ALBUM_ID
+GROUP BY ARTISTS.ARTIST_NAME, ALBUMS.ALBUM_ID
+HAVING COUNT(SONGS.SONG_ID) > 3;
+
 --Part – C
 --27. Retrieve albums that have been released in the same year as 'Album4'
+select Album_title , Release_year from Albums
+where Release_year = (
+						select Release_year from Albums
+						where Album_title = 'Album4');
+
 --28. Find the longest song in each genre
+SELECT S1.GENRE, S1.SONG_TITLE, S1.DURATION
+FROM SONGS S1
+JOIN (
+    SELECT GENRE, MAX(DURATION) AS MAX_DURATION
+    FROM SONGS
+    GROUP BY GENRE
+) S2
+ON S1.GENRE = S2.GENRE AND S1.DURATION = S2.MAX_DURATION;
+
 --29. Retrieve the titles of songs released in albums that contain the word 'Album' in the title.
+select Song_title 
+from  Songs s join Albums a
+on s.Album_id = a.Album_id
+where Album_title like '%Album%';
+
 --30. Retrieve the total duration of songs by each artist where total duration exceeds 15 minutes.
+select ar.Artist_name , sum(s.Duration) as Total_Duration
+from Songs s
+join Albums al on s.Album_id = al.Album_id
+join Artists ar on al.Artist_id = ar.Artist_id
+group by ar.Artist_name
+having sum(s.Duration) > 15;
