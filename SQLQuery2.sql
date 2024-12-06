@@ -386,3 +386,5 @@ BEGIN
 	ON P.DESIGNATIONID = DS.DesignationID
 	WHERE DS.DesignationName = @DESNAME AND P.JoiningDate > '2014-01-01';
 END
+
+EXEC PR_15;
