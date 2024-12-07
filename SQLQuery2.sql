@@ -377,6 +377,7 @@ EXEC PR_14;
 --15. Create a procedure to retrieve the details of workers in departments where the average salary is above
 --12000.
 CREATE OR ALTER PROC PR_15
+@DESNAME varchar(50)
 AS
 BEGIN
 	SELECT *
@@ -387,4 +388,4 @@ BEGIN
 	WHERE DS.DesignationName = @DESNAME AND P.JoiningDate > '2014-01-01';
 END
 
-EXEC PR_15;
+EXEC PR_15 'ceo';
