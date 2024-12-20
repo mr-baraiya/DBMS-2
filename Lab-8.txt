@@ -10,10 +10,9 @@ Part:-A
 8. show collections
 9. db.Department.insertOne({Dname:"CE",HOD:"Patel"})
 10. db.Department.insertMany([{Dname:"IT"},{Dname:"ICT"}])
-	db.Department.find().forEach(printjson)
 11. db.Department.drop()
 12. db.Student.insertOne({Name:"Vishal",City:"Botad",Branch:"CSE",Semester:4,Age:18})
-13. db.Student.insertOne([
+13. db.Student.insertMany([
 {Name:"Karan",City:"Rajkot",Branch:"CSE",Semester:4,Age:20},
 ({Name:"Parva",City:"Gondal",Branch:"CSE",Semester:4,Age:28}),
 ({Name:"Darshan",City:"Morbi",Branch:"CSE",Semester:4,Age:34})
