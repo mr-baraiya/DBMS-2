@@ -1,0 +1,32 @@
+Part :- A
+
+1. db.Deposit.find().forEach(printjson)
+2. db.Deposit.findOne()
+3. db.Deposit.insertOne({ACTNO:109,CNAME:"KRITI",BNAME:"VIRAR",AMOUNT:3000,ADATE:"3-5-97"})
+4. db.Deposit.insertMany([
+{ACTNO:110,CNAME:"MITALI",BNAME:"ANDHERI",AMOUNT:4500,ADATE:"4-9-95"},
+{ACTNO:111,CNAME:"RAJIV",BNAME:"NEHRU PLACE",AMOUNT:7000,ADATE:"2-10-98"}
+])
+5. db.Deposit.find({BNAME:"VIRAR"})
+6. db.Deposit.find(
+{$and:
+	[{AMOUNT:{$gt:3000}},{AMOUNT:{$lt:5000}}]
+}
+)
+7.db.Deposit.find({
+$and:
+  [
+    {AMOUNT:{$gt:2000}},
+    {BNAME:{$eq:"VIRAR"}}
+	]
+})
+8. db.Deposit.find({},{_id:0,CNAME:1,BNAME:1,AMOUNT:1})
+9. db.Deposit.find().sort({CNAME:1})
+10. db.Deposit.find().sort({BNAME:-1})
+11. db.Deposit.find().sort([{ACTNO:1},{AMOUNT:-1}])
+12. db.Deposit.find().limit(2)
+13. db.Deposit.find().skip(2).limit(1)
+14. db.Deposit.find().skip(5).limit(2)
+15. db.Deposit.find().count()
+
+Part :- B
