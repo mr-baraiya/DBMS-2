@@ -62,5 +62,52 @@ Part :- B
 3. db.Student_data.find({CITY : {$in : ["Rajkot","Baroda"]}})
 4. db.Student_data.find({CITY : "Baroda"},{_id : 0,SNAME: 1}).limit(2)
 5. db.Student_data.find({$and: [{GENDER : "Male"},{SEM : 3}]})
-6.  
+6. db.Student_data.find({ROLLNO : {$lt : 105}},{_id : 0,SNAME : 1,CITY : 1})
+7. db.Student_data.updateMany({$and:[{CITY : "Jamnagar"},{DEPARTMENT : "CE"}]},{$set : {CITY : "Surat"}})
+8. db.Student_data.updateMany({GENDER : {$ne : "Female"}},{$inc : {FEES : 500}})
+9. db.Student_data.updateMany({$and:[{SEM : 3},{DEPARTMENT : "EE"}]},{$set : {DEPARTMENT : "Electrical"}})
+10. db.Student_data.updateMany({$and:[{GENDER : "Male"},{CITY : "Rajkot"}]},{$inc : {FEES : -500}})
+11. db.Student_data.updateMany({$and:[{SEM : 5},{FEEs : {$lt : 10000}}]},{$set : {CITY : "Vadodara"}})
+12. db.Student_data.deleteMany({$and : [{CITY : "Ahmedabad"},{GENDER : "Male"}]})
+13. db.Student_data.deleteMany({ROLLNO : {$nin : [101,105,115]}})
+14. db.Student_data.deleteMany({$and : [{DEPARTMENT : "Civil"},{$or : [{SEM : 5},{SEM : 7}]}]})
+15. db.Student_data.deleteMany({CITY: {$nin : ["Rajkot","Jamnagar","Baroda"]}})
+16. db.Student_data.deleteMany({$and : [{ROLLNO : {$gt : 105}},{ROLLNO : {$lt : 110}}]})
+17. db.Student_data.updateMany({},{$rename : {"CITY" : "LOCATION"}})
+18. db.Student_data.updateMany({FEES : {$lt : 10000}},{$rename : {"DEPARTMENT" : "BRANCH"}})
+19. db.Student_data.updateMany({ROLLNO : {$in : [106,107,108]}},{$rename : {"SNAME" : "FULLNAME"}})
+20. db.Student_data.updateMany({FEES : {$gt : 9000}},{$rename : {"FEES" : "TUTION_FEES"}})
+21. db.Student_data.updateMany({$and : [{FEES : {$lt : 15000}},{GENDER : "Female"}]},{$rename : {"DEPARTMENT" : "MAJOR"}})
+22. db.Student_data.updateMany({$and : [{SEM : {$eq : 3}},{DEPARTMENT : {$ne : "Mechanical"}}]},{$rename : {"CITY" : "HOMETOWN"}})
 
+Part :- C
+
+1. db.createCollection("logs",{
+capped: true,
+size: 100,
+max: 10
+})
+
+2. db.logs.insertMany([
+{ message: "System started", level: "info", timestamp: new Date() },
+{ message: "Disk space low", level: "warning", timestamp: new Date() },
+{ message: "User login", level: "info", timestamp: new Date() },
+{ message: "System reboot", level: "info", timestamp: new Date() },
+{ message: "Error in module", level: "error", timestamp: new Date() },
+{ message: "Memory usage high", level: "warning", timestamp: new Date() },
+{ message: "User logout", level: "info", timestamp: new Date() },
+{ message: "File uploaded", level: "info", timestamp: new Date() },
+{ message: "Network error", level: "error", timestamp: new Date() },
+{ message: "Backup completed", level: "info", timestamp: new Date() },
+{ message: "Database error", level: "error", timestamp: new Date() },
+{ message: "Service started", level: "info", timestamp: new Date() }
+]) 
+
+3. db.logs.find()
+4. db.logs.insertMany([
+{ message: "New log entry 1", level: "info", timestamp: new Date() },
+{ message: "New log entry 2", level: "info", timestamp: new Date() },
+{ message: "New log entry 3", level: "info", timestamp: new Date() },
+{ message: "New log entry 4", level: "warning", timestamp: new Date() },
+{ message: "New log entry 5", level: "error", timestamp: new Date() }
+])
