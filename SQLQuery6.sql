@@ -138,25 +138,24 @@ deallocate Product_CursorUpdate;
 SELECT * FROM Products;
 --6. Create a Cursor to Rounds the price of each product to the nearest whole number.
 declare @Pid INT;
-declare @Price DECIMAL(10, 2);
 
 declare Product_Update_Price_To_nearestWholeNumber Cursor
 for
-	select Product_id , Price from Products;
+	select Product_id from Products;
 
 open Product_Update_Price_To_nearestWholeNumber;
 
 fetch next from Product_Update_Price_To_nearestWholeNumber
-into @Pid , @Price;
+into @Pid;
 
 while @@FETCH_STATUS = 0
 	begin
 		UPDATE Products
-		SET Price = ROUND(@Price,2)
+		SET Price = ROUND(Price,0)
 		WHERE Product_id = @Pid;
 
 		fetch next from Product_Update_Price_To_nearestWholeNumber
-		into @Pid , @Price;
+		into @Pid;
 	end
 
 close Product_Update_Price_To_nearestWholeNumber;
