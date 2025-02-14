@@ -1,0 +1,49 @@
+------------------------------------------------- Lab-11 -------------------------------------------------
+
+--------------------------- Part-A --------------------------------
+
+1.db.employee.find({ENAME:/^E/})
+2.db.employee.find({ENAME:/n$/})
+3.db.employee.find({ENAME:/^[SM]/})
+4.db.employee.find({ENAME:/^[SM]/})
+5.db.employee.find({CITY:/ney$/})
+6.db.employee.find({ENAME:/n/i})
+7.db.employee.find({ENAME:/^E.{4}$/i})
+8.db.employee.find({ENAME:/^S.*a$/i})
+9.db.employee.find({ENAME:/^Phi/i},{_id:0,EID:1,ENAME:1,CITY:1,SALARY:1})
+10.db.employee.find({CITY:/dne/i},{_id:0,ENAME:1,CITY:1,JOININGDATE:1})
+11.db.employee.find({CITY:{$not : /London|Sydney/}},{_id:0,ENAME:1,CITY:1,JOININGDATE:1})
+12.db.employee.find({ENAME:/^J/})
+13.db.employee.find({ENAME:/y$/})
+14.db.employee.find({ENAME:/a/})
+15.db.employee.find({ENAME:/[AE]/i})
+16.db.employee.find({ENAME:/^J.*n$/i})
+17.db.employee.find({CITY:/^NEW/i})
+18.db.employee.find({CITY:{$not : /^L/i}})
+19.db.employee.find({CITY:/YORK/i})
+20.db.employee.find({ENAME:/[AEIOU]{2}/i})
+21.db.employee.find({ENAME:/^.{3,}$/i}) or db.employee.find({ENAME:/^....*$/i})
+22.db.employee.find({ENAME:/^.{4}$/i}) or db.employee.find({ENAME:/^....$/i})
+23.db.employee.find({ENAME:/^[SM]/i})
+24.db.employee.find({ENAME:/il/i})
+25.db.employee.find({ENAME:{$not : /a/}})
+26.db.employee.find({ENAME:/\d/})
+27.db.employee.find({ENAME:/^[^AEIOU]*[AEIOU][^AEIOU]*$/i})
+28.db.employee.find({ ENAME: /^[A-Z][a-z]/})
+
+--------------------------- Part-B --------------------------------
+
+1.db.Student.find({SNAME:/^K/})
+2.db.Student.find({SNAME:/^[ZD]/})
+3.db.Student.find({CITY:/^[A-R]/i})
+4.db.Student.find({SNAME:/^P.*I$/i})
+5.db.Student.find({DEPARTMENT:/^C/i})
+6.db.Student.find({ CITY: /med/ },{ SNAME: 1, SEM: 1, FEES: 1, DEPARTMENT: 1, _id: 0 })
+7.db.Student.find({ CITY: {$not : /^Rajkot|Baroda$/} },{ SNAME: 1, SEM: 1, FEES: 1, DEPARTMENT: 1, _id: 0 })
+8.db.Student.find({SNAME:/^K.*$/i})
+9.db.Student.find({SNAME:/^.*a$/i})
+10.db.Student.find({SNAME:/ri/i})
+
+--------------------------- Part-C --------------------------------
+
+1.
