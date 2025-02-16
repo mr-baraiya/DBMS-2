@@ -1,0 +1,65 @@
+Part :- A
+
+1. db.Deposit.find().forEach(printjson)
+2. db.Deposit.findOne()
+3. db.Deposit.insertOne({ACTNO:109,CNAME:"KRITI",BNAME:"VIRAR",AMOUNT:3000,ADATE:"3-5-97"})
+4. db.Deposit.insertMany([
+{ACTNO:110,CNAME:"MITALI",BNAME:"ANDHERI",AMOUNT:4500,ADATE:"4-9-95"},
+{ACTNO:111,CNAME:"RAJIV",BNAME:"NEHRU PLACE",AMOUNT:7000,ADATE:"2-10-98"}
+])
+5. db.Deposit.find({BNAME:"VIRAR"})
+6. db.Deposit.find(
+{$and:
+	[{AMOUNT:{$gt:3000}},{AMOUNT:{$lt:5000}}]
+}
+)
+7.db.Deposit.find({
+$and:
+  [
+    {AMOUNT:{$gt:2000}},
+    {BNAME:{$eq:"VIRAR"}}
+	]
+})
+8. db.Deposit.find({},{_id:0,CNAME:1,BNAME:1,AMOUNT:1})
+9. db.Deposit.find().sort({CNAME:1})
+10. db.Deposit.find().sort({BNAME:-1})
+11. db.Deposit.find().sort([{ACTNO:1},{AMOUNT:-1}])
+12. db.Deposit.find().limit(2)
+13. db.Deposit.find().skip(2).limit(1)
+14. db.Deposit.find().skip(5).limit(2)
+15. db.Deposit.find().count()
+
+Part :- B
+
+1. db.Student.insertMany([
+{ "_id": 1, "name": "John", "age": 30, "city": "New York", "isActive": true },
+{ "_id": 2, "name": "Jane", "age": 25, "city": "Los Angeles", "isActive": false },
+{ "_id": 3, "name": "Tom", "age": 35, "city": "Chicago", "isActive": true },
+{ "_id": 4, "name": "Lucy", "age": 28, "city": "San Francisco", "isActive": true },
+{ "_id": 5, "name": "David", "age": 40, "city": "Miami", "isActive": false },
+{ "_id": 6, "name": "Eva", "age": 23, "city": "Boston", "isActive": true },
+{ "_id": 7, "name": "Nick", "age": 38, "city": "Seattle", "isActive": false },
+{ "_id": 8, "name": "Sophia", "age": 27, "city": "New York", "isActive": true },
+{ "_id": 9, "name": "Liam", "age": 32, "city": "Los Angeles", "isActive": false },
+{ "_id": 10, "name": "Olivia", "age": 29, "city": "San Diego", "is
+Active": true }
+])
+2. db.Student.find().forEach(printjson)
+3. db.Student.find({age:30}).forEach(printjson)
+4. db.Student.find({age:{$gt:30}}).forEach(printjson)
+5. db.Student.find({$and:[{name:{$eq:"John"}},{age:{$eq:30}}]}).forEach(printjson)
+6. db.Student.find({age:{$ne:30}}).forEach(printjson)
+7. db.Student.find({age:{$in:[25,30,35]}}).forEach(printjson)
+   db.Student.find({$or:[{age:25},{age:30},{age:35}]}).forEach(printjson)
+8. db.Student.find({$or:[{name:{$eq:"John"}},{age:{$eq:30}}]}).forEach(printjson)
+9. db.Student.find({$and:[{name:{$eq:"John"}},{city:{$eq:"New York"}}]}).forEach(printjson)
+10. db.Student.find({$and:[{name:{$eq:"John"}},{city:{$eq:"New York"}}]},{_id:0,name:1,age:1}).forEach(printjson)
+
+Part :- C
+
+1. db.Student.find({$and:[{age:{$gt:25}},{age:{$lt:35}}]}).sort({age:1}).forEach(printjson)
+2. db.Student.find().sort([{name:1},{age:-1}]).forEach(printjson)
+3. db.Student.find().limit(5)
+4. db.Student.find().skip(3).limit(2)
+5. db.Student.find({},{_id:0,name:1}).sort({age:-1}).limit(1)
+6. db.Student.find().skip(2)

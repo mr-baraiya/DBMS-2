@@ -1,0 +1,74 @@
+Part:-A
+
+1. use Darshan
+2. use DIET
+3. show databases
+4. db
+5. db.dropDatabase()
+6. db.createCollection("Student")
+7. db.createCollection("Department")
+8. show collections
+9. db.Department.insertOne({Dname:"CE",HOD:"Patel"})
+10. db.Department.insertMany([{Dname:"IT"},{Dname:"ICT"}])
+11. db.Department.drop()
+12. db.Student.insertOne({Name:"Vishal",City:"Botad",Branch:"CSE",Semester:4,Age:18})
+13. db.Student.insertMany([
+{Name:"Karan",City:"Rajkot",Branch:"CSE",Semester:4,Age:20},
+({Name:"Parva",City:"Gondal",Branch:"CSE",Semester:4,Age:28}),
+({Name:"Darshan",City:"Morbi",Branch:"CSE",Semester:4,Age:34})
+])
+14. db.Student.exists()
+15. db.Student.stats()
+16. db.Student.drop()
+17. db.createCollection("Deposit")
+18. db.Deposit.insertMany([
+  { ACTNO: 101, CNAME: 'ANIL', BNAME: 'VRCE', AMOUNT: 1000.00, CITY: 'RAJKOT' },
+  { ACTNO: 102, CNAME: 'SUNIL', BNAME: 'AJNI', AMOUNT: 5000.00, CITY: 'SURAT' },
+  { ACTNO: 103, CNAME: 'MEHUL', BNAME: 'KAROLBAGH', AMOUNT: 3500.00, CITY: 'BARODA' },
+  { ACTNO: 104, CNAME: 'MADHURI', BNAME: 'CHANDI', AMOUNT: 1200.00, CITY: 'AHMEDABAD' },
+  { ACTNO: 105, CNAME: 'PRMOD', BNAME: 'M.G. ROAD', AMOUNT: 3000.00, CITY: 'SURAT' },
+  { ACTNO: 106, CNAME: 'SANDIP', BNAME: 'ANDHERI', AMOUNT: 2000.00, CITY: 'RAJKOT' },
+  { ACTNO: 107, CNAME: 'SHIVANI', BNAME: 'VIRAR', AMOUNT: 1000.00, CITY: 'SURAT' },
+  { ACTNO: 108, CNAME: 'KRANTI', BNAME: 'NEHRU PLACE', AMOUNT: 5000.00, CITY: 'RAJKOT' }
+]
+)
+19. db.Deposit.find().forEach(printjson)
+20. db.Deposit.drop()
+
+Part:-B
+
+1. use Computer
+2. db.createCollection("Faculty")
+3. db.Faculty.insertOne({FId:1,FNAME:"ANIL",BNAME:"CE",SALARY:10000,JDATE:"1-3-95"})
+4. db.Faculty.insertMany([
+  { FID: 2, FNAME: 'SUNIL', BNAME: 'CE', SALARY: 50000, JDATE: '4-1-96' },
+  { FID: 3, FNAME: 'MEHUL', BNAME: 'IT', SALARY: 35000, JDATE: '17-11-95' },
+  { FID: 4, FNAME: 'MADHURI', BNAME: 'IT', SALARY: 12000, JDATE: '17-12-95' },
+  { FID: 5, FNAME: 'PRMOD', BNAME: 'CE', SALARY: 30000, JDATE: '27-3-96' },
+  { FID: 6, FNAME: 'SANDIP', BNAME: 'CE', SALARY: 20000, JDATE: '31-3-96' },
+  { FID: 7, FNAME: 'SHIVANI', BNAME: 'CE', SALARY: 10000, JDATE: '5-9-95' },
+  { FID: 8, FNAME: 'KRANTI', BNAME: 'IT', SALARY: 50000, JDATE: '2-7-95' }
+]
+)
+5. db.Faculty.find().forEach(printjson)
+6. db.Faculty.drop()
+7. db.dropDatabase()
+
+Part:-C
+
+1. use Computer
+2. db.createCollection("Faculty")
+3. db.Faculty.insertMany([
+  {FId:1,FNAME:"ANIL",BNAME:"CE",SALARY:10000,JDATE:"1-3-95"},
+  { FID: 2, FNAME: 'SUNIL', BNAME: 'CE', SALARY: 50000, JDATE: '4-1-96' },
+  { FID: 3, FNAME: 'MEHUL', BNAME: 'IT', SALARY: 35000, JDATE: '17-11-95' },
+  { FID: 4, FNAME: 'MADHURI', BNAME: 'IT', SALARY: 12000, JDATE: '17-12-95' },
+  { FID: 5, FNAME: 'PRMOD', BNAME: 'CE', SALARY: 30000, JDATE: '27-3-96' },
+  { FID: 6, FNAME: 'SANDIP', BNAME: 'CE', SALARY: 20000, JDATE: '31-3-96' },
+  { FID: 7, FNAME: 'SHIVANI', BNAME: 'CE', SALARY: 10000, JDATE: '5-9-95' },
+  { FID: 8, FNAME: 'KRANTI', BNAME: 'IT', SALARY: 50000, JDATE: '2-7-95' }
+]
+)
+4. db.Faculty.find().forEach(printjson)
+5. db.Faculty.drop()
+6. db.dropDatabase()
