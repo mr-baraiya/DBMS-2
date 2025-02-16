@@ -5,7 +5,7 @@
 1.db.employee.find({ENAME:/^E/})
 2.db.employee.find({ENAME:/n$/})
 3.db.employee.find({ENAME:/^[SM]/})
-4.db.employee.find({ENAME:/^[SM]/})
+4.db.employee.find({ENAME:/^[A-M]/})
 5.db.employee.find({CITY:/ney$/})
 6.db.employee.find({ENAME:/n/i})
 7.db.employee.find({ENAME:/^E.{4}$/i})
@@ -46,4 +46,29 @@
 
 --------------------------- Part-C --------------------------------
 
-1.
+1.db.Student.find({ SNAME: { $regex: "^[AEIOU]", $options: "i" } })
+2.db.Student.find({ CITY: { $regex: "(pur|bad)$" } })
+3.db.Student.find({ FEES: { $regex: "^1" } })
+	or
+db.Student.aggregate([
+  {
+    $addFields: {
+      FEES_STR: { $toString: "$FEES" }
+    }
+  },
+  {
+    $match: {
+      FEES_STR: { $regex: "^1" }
+    }
+  }
+])
+4.db.Student.find({ SNAME: { $regex: "^[KV]", $options: "i" } })
+5.db.Student.find({ CITY: { $regex: "^.{5}$" } })
+6.db.Student.find({ SNAME: { $regex: "^[^eE]*$" } })
+7.db.Student.find({ CITY: { $regex: "^Ra.*ot$" } })
+8.db.Student.find({ SNAME: { $regex: "^[^aeiouAEIOU]*[aeiouAEIOU][^aeiouAEIOU]*$" } })
+9.db.Student.find({ SNAME: { $regex: /^(.).*\1$/i } })
+10.db.Student.find({ DEPARTMENT: { $regex: "^[CE]", $options: "i" } })
+11.db.Student.find({ SNAME: { $regex: "^.{5}$", $options: "i" } })
+12.db.Student.find({$and : [ { GENDER: "Female" } ,{ CITY: { $regex: "^A" , $options : "i" }}]})
+
