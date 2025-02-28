@@ -1,0 +1,171 @@
+------------------------------------------------ LAB-12 ----------------------------------------------
+
+----------------------- Part-A -------------------
+1.db.Student.aggregate(
+[
+  {$group:{_id:"$CITY"}},
+  {$project:{_id:0,city:"$_id"}}
+]
+)
+
+2.db.Student.aggregate(
+[
+  {$group:{_id:"$CITY",count:{$sum:1}}}
+]
+)
+
+3.db.Student.aggregate(
+[
+  {$group:{_id:null,TotalFees:{$sum:"$FEES"}}}
+]
+)
+
+4.db.Student.aggregate(
+[
+  {$group:{_id:null,TotalFees:{$avg:"$FEES"}}}
+]
+)
+
+5.db.Student.aggregate(
+[
+  {$group:{_id:null,MaxFees:{$max:"$FEES"},MinFees:{$min:"$FEES"}}}
+]
+)
+
+6.db.Student.aggregate(
+[
+  {$group:{_id:"$CITY",TotalFees:{$sum:"$FEES"}}}
+]
+)
+
+7.db.Student.aggregate(
+[
+  {$group:{_id:{GENDER : "$GENDER" },MaxFees:{$max:"$FEES"}}}
+]
+)
+
+8.db.Student.aggregate(
+[
+  {$group:{_id:"$CITY",MaxFees:{$max:"$FEES"},MinFees:{$min:"$FEES"}}}
+]
+)
+
+9.db.Student.aggregate(
+[
+  {$match:{CITY : "Baroda"}},
+  {$group:{_id:"$CITY",count:{$sum:1}}}
+]
+)
+
+10.db.Student.aggregate(
+[
+  {$match:{CITY : "Rajkot"}},
+  {$group:{_id:"$CITY",AvgFees:{$avg:"$FEES"}}}
+]
+)
+
+11.db.Student.aggregate([
+  {
+    $group: {
+      _id: { DEPARTMENT: "$DEPARTMENT", GENDER: "$GENDER" },
+      count: { $sum: 1 }
+    }
+  }
+])
+
+12.db.Student.aggregate([
+  {
+    $group: {
+      _id: { DEPARTMENT: "$DEPARTMENT"},
+      TotalFees: { $sum: "$FEES" }
+    }
+  }
+])
+
+13.db.Student.aggregate([
+  {
+    $group: {
+      _id: { DEPARTMENT: "$DEPARTMENT", CITY: "$CITY" },
+      MinFees : { $min: "$FEES" }
+    }
+  }
+])
+
+14.db.Student.aggregate([
+  { $sort: { fees: -1 } },
+  { $limit: 5 }
+])
+or db.Student.find().sort({FEES : -1}).limit(5)
+
+15.db.Student.aggregate([
+  {
+    $group: {
+      _id: { CITY: "$CITY" },
+			AvgFees : { $avg: "$FEES" },
+      count : { $sum: 1 }
+    }
+  }
+])
+
+16.db.Student.aggregate([
+  { 
+    $match: { DEPARTMENT: { $in: ["CE", "Mechanical"] } }
+  },
+  {
+    $group: {
+      _id: null,    
+      TotalFees: { $sum: "$FEES" }
+    }
+  }
+])
+
+17.db.Student.aggregate([
+	{
+	   $group: {
+      _id: { Depatment : "$DEPARTMENT",GENDER : "$GENDER" },    
+      count: { $sum: 1 }
+    }
+  }
+])
+
+18.db.Student.aggregate([
+{
+	$match:{CITY : "Rajkot"}
+},	
+{
+	   $group: {
+      _id: { Depatment : "$DEPARTMENT" },    
+      AvgFEES: { $avg: "$FEES" }
+    }
+  }
+])
+
+19.db.Student.aggregate([
+{
+	   $group: {
+      _id: { SEM : "$SEM" },    
+      AVGFEES: { $avg: "$FEES" },
+			TOTALFEES: { $sum: "$FEES" }
+    }
+  },
+  {
+	$sort:{ TOTALFEES : -1}
+	}
+])
+
+20.db.Student.aggregate([
+{
+	   $group: {
+      _id: { CITY : "$CITY" },
+			TOTALFEES: { $sum: "$FEES" }
+    }
+  },
+  {
+	$sort:{ TOTALFEES : -1}
+  },
+	{$limit : 3}
+])
+
+----------------------- Part-B -------------------
+
+----------------------- Part-C -------------------
